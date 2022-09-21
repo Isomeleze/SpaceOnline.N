@@ -171,6 +171,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -236,6 +237,7 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Product\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -252,6 +254,24 @@
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.4.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SpaceOnline.Core\SpaceOnline.Core.csproj">
+      <Project>{3f826c9e-5d30-469b-9bcc-9195ed915b83}</Project>
+      <Name>SpaceOnline.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SpaceOnline.DataAccess.Inmemory\SpaceOnline.DataAccess.Inmemory.csproj">
+      <Project>{60713bd0-ac9e-4bd4-bcf0-0188163359da}</Project>
+      <Name>SpaceOnline.DataAccess.Inmemory</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SpaceOnline.DataAccess.SQL\SpaceOnline.DataAccess.SQL.csproj">
+      <Project>{92a20a78-89b8-4adb-b46c-a1ff16038a9f}</Project>
+      <Name>SpaceOnline.DataAccess.SQL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SpaceOnline.Services\SpaceOnline.Services.csproj">
+      <Project>{b7fae106-70d6-4256-bd7d-1e92fe9a146f}</Project>
+      <Name>SpaceOnline.Services</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
