@@ -1,4 +1,5 @@
-﻿using SpaceOnline.Core.Models;
+﻿using SpaceOnline.Core.Contracts;
+using SpaceOnline.Core.Models;
 using SpaceOnline.Core.ViewModels;
 using SpaceOnline.DataAccess.Inmemory;
 using System;
@@ -11,12 +12,12 @@ namespace SpaceOnline.UI.Controllers
 {
     public class ProductController : Controller
     {
-        ProductRepository context;
-        CategoryRepository productCategories;
-        public ProductController()
+        IRepository<Product> context;
+        IRepository<ProductCategory> productCategories;
+        public ProductController(IRepository<Product> productContext, IRepository<ProductCategory> categoryContext)
         {
-            context = new ProductRepository();
-            productCategories = new CategoryRepository();
+            context = productContext;
+            productCategories = categoryContext;
         }
         // GET: Product
         public ActionResult Index()

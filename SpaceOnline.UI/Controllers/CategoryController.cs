@@ -1,4 +1,5 @@
-﻿using SpaceOnline.Core.Models;
+﻿using SpaceOnline.Core.Contracts;
+using SpaceOnline.Core.Models;
 using SpaceOnline.DataAccess.Inmemory;
 using System;
 using System.Collections.Generic;
@@ -10,10 +11,10 @@ namespace SpaceOnline.UI.Controllers
 {
     public class CategoryController : Controller
     {
-        CategoryRepository context;
-        public CategoryController()
+        IRepository<ProductCategory> context;
+        public CategoryController(IRepository<ProductCategory> categoryContext)
         {
-            context = new CategoryRepository();
+            context = categoryContext;
         }
         // GET: Category
         public ActionResult Index()
@@ -40,7 +41,19 @@ namespace SpaceOnline.UI.Controllers
                 return RedirectToAction("Index");
             }
         }
-        
+
+        public ActionResult Edit(string Id)
+        {
+            ProductCategory productCategory = context.Find(Id);
+            if (productCategory == null)
+            {
+                return HttpNotFound();
+            }
+            else
+            {
+                return View(productCategory);
+            }
+        }
         [HttpPost]
         public ActionResult Edit(ProductCategory productCategory, string Id)
         {
