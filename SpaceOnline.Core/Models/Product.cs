@@ -22,3 +22,10 @@ namespace SpaceOnline.Core.Models
        
     }
 }
+
+namespace SpaceOnline.Core
+{
+    public class Product
+    {
+    }
+}
