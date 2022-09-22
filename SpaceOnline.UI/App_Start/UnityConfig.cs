@@ -1,6 +1,7 @@
 using SpaceOnline.Core.Contracts;
 using SpaceOnline.Core.Models;
 using SpaceOnline.DataAccess.Inmemory;
+using SpaceOnline.DataAccess.SQL;
 using System;
 
 using Unity;
@@ -45,8 +46,8 @@ namespace SpaceOnline.UI
 
             // TODO: Register your type's mappings here.
             // container.RegisterType<IProductRepository, ProductRepository>();
-            container.RegisterType<IRepository<Product>, InMemoryRepository<Product>>();
-            container.RegisterType<IRepository<ProductCategory>, InMemoryRepository<ProductCategory>>();
+            container.RegisterType<IRepository<Product>, SQLRepository<Product>>();
+            container.RegisterType<IRepository<ProductCategory>, SQLRepository<ProductCategory>>();
         }
     }
 }
