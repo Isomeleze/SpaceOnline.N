@@ -40,19 +40,7 @@ namespace SpaceOnline.UI.Controllers
                 return RedirectToAction("Index");
             }
         }
-
-        public ActionResult Edit(string Id)
-        {
-            ProductCategory productCategory = context.Find(Id);
-            if (productCategory == null)
-            {
-                return HttpNotFound();
-            }
-            else
-            {
-                return View(productCategory);
-            }
-        }
+        
         [HttpPost]
         public ActionResult Edit(ProductCategory productCategory, string Id)
         {

@@ -1,4 +1,5 @@
 ﻿using SpaceOnline.Core.Models;
+using SpaceOnline.Core.ViewModels;
 using SpaceOnline.DataAccess.Inmemory;
 using System;
 using System.Collections.Generic;
@@ -11,19 +12,24 @@ namespace SpaceOnline.UI.Controllers
     public class ProductController : Controller
     {
         ProductRepository context;
+        CategoryRepository productCategories;
         public ProductController()
         {
             context = new ProductRepository();
+            productCategories = new CategoryRepository();
         }
         // GET: Product
         public ActionResult Index()
         {
             List<Product> products = context.Collection().ToList();
-            return View();
+            return View(products);
         }
         public ActionResult Create()
         {
-            return View();
+            ProductVM viewModel = new ProductVM();
+            viewModel.Product = new Product();
+            viewModel.ProductCategories = productCategories.Collection();
+            return View(viewModel);
         }
         [HttpPost]
         public ActionResult Create(Product product)
@@ -49,18 +55,10 @@ namespace SpaceOnline.UI.Controllers
             }
             else
             {
-                if (!ModelState.IsValid)
-                {
-                    return View(product);
-                }
-                productToEdit.Category = product.Category;
-                productToEdit.Description = product.Description;
-                productToEdit.Image = product.Image;
-                productToEdit.Name = product.Name;
-                productToEdit.Price = product.Price;
-                context.Commit();
-                return RedirectToAction("Index");
-
+                ProductVM viewModel = new ProductVM();
+                viewModel.Product = new Product();
+                viewModel.ProductCategories = productCategories.Collection();
+                return View(viewModel);
 
             }
         }
