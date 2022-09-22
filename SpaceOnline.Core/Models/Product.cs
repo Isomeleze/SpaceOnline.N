@@ -27,5 +27,9 @@ namespace SpaceOnline.Core
 {
     public class Product
     {
+        public static implicit operator Product(Models.Product v)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

@@ -1,4 +1,7 @@
-﻿using System;
+﻿using SpaceOnline.Core.Contracts;
+using SpaceOnline.Core.Models;
+using SpaceOnline.Core.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,9 +11,30 @@ namespace SpaceOnline.UI.Controllers
 {
     public class HomeController : Controller
     {
-        public ActionResult Index()
+        IRepository<Product> context;
+        IRepository<ProductCategory> productCategories;
+        public HomeController(IRepository<Product> productContext, IRepository<ProductCategory> categoryContext)
         {
-            return View();
+            context = productContext;
+            productCategories = categoryContext;
+
+        }
+        public ActionResult Index(string Category = null)
+        {
+            List<Product> products;
+            List<ProductCategory> categories = productCategories.Collection().ToList();
+            if (Category == null)
+            {
+                products = context.Collection().ToList();
+            }
+            else
+            {
+                products = context.Collection().Where(p => p.Category == Category).ToList();
+            }
+            ProductListVM model = new ProductListVM();
+            model.Products = products;
+            model.ProductCategories = categories;
+            return View(model);
         }
 
         public ActionResult About()
