@@ -13,7 +13,7 @@ namespace SpaceOnline.DataAccess.SQL.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "202209221215013_Initial"; }
+            get { return "202209231021452_Initial"; }
         }
         
         string IMigrationMetadata.Source
