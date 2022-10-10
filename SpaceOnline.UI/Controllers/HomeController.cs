@@ -32,7 +32,7 @@ namespace SpaceOnline.UI.Controllers
                 products = context.Collection().Where(p => p.Category == Category).ToList();
             }
             ProductListVM model = new ProductListVM();
-            model.Products = (IEnumerable<Core.Product>)products;
+            model.Products = products;
             model.ProductCategories = categories;
             return View(model);
         }

@@ -47,6 +47,7 @@
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Runtime.Caching" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.ApplicationServices" />
     <Reference Include="System.Web.Extensions" />
@@ -89,6 +90,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Mocks\MockContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Controllers\HomeControllerTest.cs" />
   </ItemGroup>
@@ -99,6 +101,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\SpaceOnline.Core\SpaceOnline.Core.csproj">
+      <Project>{3F826C9E-5D30-469B-9BCC-9195ED915B83}</Project>
+      <Name>SpaceOnline.Core</Name>
+    </ProjectReference>
     <ProjectReference Include="..\SpaceOnline.UI\SpaceOnline.UI.csproj">
       <Project>{D0D95FF4-479C-4CCD-ACB6-F5C58E7C5D5E}</Project>
       <Name>SpaceOnline.UI</Name>
