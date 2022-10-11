@@ -8,6 +8,8 @@ using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
+using SpaceOnline.Core.Contracts;
+using SpaceOnline.Core.Models;
 using SpaceOnline.UI.Models;
 
 namespace SpaceOnline.UI.Controllers
@@ -17,15 +19,15 @@ namespace SpaceOnline.UI.Controllers
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
+        private IRepository<Customer> customerRepository;
 
         public AccountController()
         {
         }
 
-        public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager )
+        public AccountController(IRepository<Customer> CustomerRepository)
         {
-            UserManager = userManager;
-            SignInManager = signInManager;
+            this.customerRepository = CustomerRepository;
         }
 
         public ApplicationSignInManager SignInManager
@@ -153,8 +155,22 @@ namespace SpaceOnline.UI.Controllers
             {
                 var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
                 var result = await UserManager.CreateAsync(user, model.Password);
-                if (result.Succeeded)
+                if (result.Succeeded)              
                 {
+                    //Register the Customer
+                    Customer customer = new Customer()
+                    {
+                        City = model.City,
+                        Email = model.Email,
+                        FirstName = model.FirstName,
+                        LastName = model.LastName,
+                        State = model.State,
+                        Street = model.Street,
+                        ZipCode = model.ZipCode,
+                        UserId = user.Id
+                    };
+                    customerRepository.Insert(customer);
+                    customerRepository.Commit();
                     await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
                     
                     // For more information on how to enable account confirmation and password reset please visit https://go.microsoft.com/fwlink/?LinkID=320771
