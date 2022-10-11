@@ -7,13 +7,13 @@ namespace SpaceOnline.DataAccess.SQL.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.4.4")]
-    public sealed partial class Initial : IMigrationMetadata
+    public sealed partial class AddCart : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(Initial));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(AddCart));
         
         string IMigrationMetadata.Id
         {
-            get { return "202209231021452_Initial"; }
+            get { return "202210112031094_Add-Cart"; }
         }
         
         string IMigrationMetadata.Source

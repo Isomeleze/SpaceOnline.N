@@ -31,25 +31,18 @@
                 .PrimaryKey(t => t.Id);
             
             CreateTable(
-                "dbo.ProductCategories",
+                "dbo.Customers",
                 c => new
                     {
                         Id = c.String(nullable: false, maxLength: 128),
-                        Category = c.String(),
-                        CreatedAt = c.DateTimeOffset(nullable: false, precision: 7),
-                    })
-                .PrimaryKey(t => t.Id);
-            
-            CreateTable(
-                "dbo.Products",
-                c => new
-                    {
-                        Id = c.String(nullable: false, maxLength: 128),
-                        Name = c.String(maxLength: 25),
-                        Description = c.String(),
-                        Price = c.Decimal(nullable: false, precision: 18, scale: 2),
-                        Category = c.String(),
-                        Image = c.String(),
+                        UserId = c.String(),
+                        FirstName = c.String(),
+                        LastName = c.String(),
+                        Email = c.String(),
+                        Street = c.String(),
+                        City = c.String(),
+                        State = c.String(),
+                        ZipCode = c.String(),
                         CreatedAt = c.DateTimeOffset(nullable: false, precision: 7),
                     })
                 .PrimaryKey(t => t.Id);
@@ -60,8 +53,7 @@
         {
             DropForeignKey("dbo.CartItems", "CartId", "dbo.Carts");
             DropIndex("dbo.CartItems", new[] { "CartId" });
-            DropTable("dbo.Products");
-            DropTable("dbo.ProductCategories");
+            DropTable("dbo.Customers");
             DropTable("dbo.Carts");
             DropTable("dbo.CartItems");
         }

@@ -52,9 +52,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DataContext.cs" />
-    <Compile Include="Migrations\202209231021452_Initial.cs" />
-    <Compile Include="Migrations\202209231021452_Initial.designer.cs">
-      <DependentUpon>202209231021452_Initial.cs</DependentUpon>
+    <Compile Include="Migrations\202210112023306_Initial.cs" />
+    <Compile Include="Migrations\202210112023306_Initial.designer.cs">
+      <DependentUpon>202210112023306_Initial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202210112031094_Add-Cart.cs" />
+    <Compile Include="Migrations\202210112031094_Add-Cart.designer.cs">
+      <DependentUpon>202210112031094_Add-Cart.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -71,8 +75,11 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202209231021452_Initial.resx">
-      <DependentUpon>202209231021452_Initial.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202210112023306_Initial.resx">
+      <DependentUpon>202210112023306_Initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202210112031094_Add-Cart.resx">
+      <DependentUpon>202210112031094_Add-Cart.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
