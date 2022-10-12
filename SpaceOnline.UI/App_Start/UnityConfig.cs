@@ -1,9 +1,11 @@
 using SpaceOnline.Core.Contracts;
 using SpaceOnline.Core.Models;
 using SpaceOnline.DataAccess.SQL;
+using SpaceOnline.Services;
 using System;
 
 using Unity;
+using ICartService = SpaceOnline.Core.Contracts.ICartService;
 
 namespace SpaceOnline.UI
 {
@@ -50,6 +52,7 @@ namespace SpaceOnline.UI
             container.RegisterType<IRepository<Cart>, SQLRepository<Cart>>();
             container.RegisterType<IRepository<CartItem>, SQLRepository<CartItem>>();
             container.RegisterType<ICartService, ICartService>();
+            container.RegisterType<IRepository<Customer>, SQLRepository<Customer>>();
         }
     }
 }
