@@ -146,5 +146,9 @@ namespace SpaceOnline.Services
             cartContext.Commit();
         }
 
+        public void ClearCart(HttpContextBase httpContext)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
