@@ -27,6 +27,7 @@ namespace SpaceOnline.UI.Controllers
 
         public AccountController(IRepository<Customer> CustomerRepository)
         {
+
             this.customerRepository = CustomerRepository;
         }
 
@@ -36,9 +37,9 @@ namespace SpaceOnline.UI.Controllers
             {
                 return _signInManager ?? HttpContext.GetOwinContext().Get<ApplicationSignInManager>();
             }
-            private set 
-            { 
-                _signInManager = value; 
+            private set
+            {
+                _signInManager = value;
             }
         }
 
@@ -122,7 +123,7 @@ namespace SpaceOnline.UI.Controllers
             // If a user enters incorrect codes for a specified amount of time then the user account 
             // will be locked out for a specified amount of time. 
             // You can configure the account lockout settings in IdentityConfig
-            var result = await SignInManager.TwoFactorSignInAsync(model.Provider, model.Code, isPersistent:  model.RememberMe, rememberBrowser: model.RememberBrowser);
+            var result = await SignInManager.TwoFactorSignInAsync(model.Provider, model.Code, isPersistent: model.RememberMe, rememberBrowser: model.RememberBrowser);
             switch (result)
             {
                 case SignInStatus.Success:
@@ -155,7 +156,7 @@ namespace SpaceOnline.UI.Controllers
             {
                 var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
                 var result = await UserManager.CreateAsync(user, model.Password);
-                if (result.Succeeded)              
+                if (result.Succeeded)
                 {
                     //Register the Customer
                     Customer customer = new Customer()
@@ -171,8 +172,8 @@ namespace SpaceOnline.UI.Controllers
                     };
                     customerRepository.Insert(customer);
                     customerRepository.Commit();
-                    await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
-                    
+                    await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
+
                     // For more information on how to enable account confirmation and password reset please visit https://go.microsoft.com/fwlink/?LinkID=320771
                     // Send an email with this link
                     // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
