@@ -78,7 +78,7 @@ namespace SpaceOnline.UI.Controllers
         }
         public ActionResult Thankyou(string OrderId)
         {
-            ViewBag.OrderrId = OrderId;
+            ViewBag.OrderId = OrderId;
             return View();
         }
     }
