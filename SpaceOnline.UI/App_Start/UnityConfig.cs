@@ -54,7 +54,7 @@ namespace SpaceOnline.UI
             container.RegisterType<ICartService, CartService>();
             container.RegisterType<IRepository<Customer>, SQLRepository<Customer>>();
             container.RegisterType<IRepository<Order>, SQLRepository<Order>>();
-            container.RegisterType<IOrderService, IOrderService>();
+            container.RegisterType<IOrderService, OrderService>();
         }
     }
 }
